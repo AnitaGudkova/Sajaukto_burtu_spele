@@ -1,0 +1,44 @@
+body
+{
+background-color: #92a8d1;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2
+{
+    text-align: center;
+    color: white;
+}
+
+table
+{
+    border: 2px solid grey;
+    width: 70%;
+    height: 30px;
+    text-align: center;
+    background-color: white;
+    
+}
+.spele
+{
+    width: 270px;
+    background: rgb(72, 86, 128);
+    font-size: 20px;
+    text-align:center;
+    padding:6px 2px 2px 2px;
+}
+
+.block
+{
+    display: inline-block;
+    background: rgb(180, 178, 178);
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgb(157, 191, 243);
+}
+p
+{
+    font-size: 18px;
+    color: white;
+    
+}
