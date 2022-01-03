@@ -18,9 +18,15 @@
             </table>
         
             <h2 onclick="test();">
-                Burtu spēle
+                <a href="speletajs.html">Burtu spēle</a> 
+               
             </h2>
-
+            <h3> Sveiki, <i><span id="speletajs"></span></i></h3>
+            
+            <button onclick="startSpele();">STARTS</button>
+            <br>
+            <br>
+                      
             <div class="spele">
                 <div id="b0" class="block" onclick="izveleBurta(this);"></div>
                 <div id="b1" class="block" onclick="izveleBurta(this);"></div>
@@ -29,23 +35,28 @@
                 <div id="b4" class="block" onclick="izveleBurta(this);"></div>
                 <div id="b5" class="block" onclick="izveleBurta(this);"></div>
             </div>
-
-            <button onclick="startSpele();">STARTS</button>
-
+            
             <p>Rezultāts</p>
 
             <div class="spele">
-                <div id="rb0" class="block"></div>
-                <div id="rb1" class="block"></div>
-                <div id="rb2" class="block"></div>
-                <div id="rb3" class="block"></div>
-                <div id="rb4" class="block"></div>
-                <div id="rb5" class="block"></div>
+                <div id="rb0" class="block" onclick="notirit(0);"></div>
+                <div id="rb1" class="block" onclick="notirit(1);"></div>
+                <div id="rb2" class="block" onclick="notirit(2);"></div>
+                <div id="rb3" class="block" onclick="notirit(3);"></div>
+                <div id="rb4" class="block" onclick="notirit(4);"></div>
+                <div id="rb5" class="block" onclick="notirit(5);"></div>
             </div>
 
             <p id="rezultats"></p>
 
         </center>  
-    
+        <script>
+            document.onreadystatechange = function() {
+                if (document.readyState == 'complete') {
+                    let params = window.location.hash.split(',');
+                    document.getElementById("speletajs").textContent = params[0];
+                }
+            }
+        </script>
     </body>
 </html>

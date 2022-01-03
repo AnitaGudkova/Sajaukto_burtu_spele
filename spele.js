@@ -2,6 +2,7 @@ var vards = "EDOMTE";
 var pVards = "METODE";
 var rezultatsIndex = 0;
 var startsLaiks;
+var izmantotiBurti = [];
 
 function startSpele() {
 
@@ -9,6 +10,7 @@ function startSpele() {
     rezultatsIndex = 0;
     document.getElementById("rezultats").textContent = "";
     for (var i=0; i<6; i++) {
+        document.getElementById("b"+i).classList.remove("izmantotsBurts");
         document.getElementById("b"+i).textContent = vards[i];
         document.getElementById("rb"+i).textContent = "";
     }
@@ -17,13 +19,25 @@ function startSpele() {
 
 function izveleBurta(element) {
 
-    var elementTeksts = element.textContent;
-    document.getElementById("rb"+rezultatsIndex++).textContent = elementTeksts;
+    if (!element.classList.contains("izmantotsBurts")) {        
+        var elementTeksts = element.textContent;
+        document.getElementById("rb"+rezultatsIndex).textContent = elementTeksts;
+        izmantotiBurti[rezultatsIndex++] = element.getAttribute("id");
+        element.classList.add("izmantotsBurts");
 
-    if (rezultatsIndex == 6) {
-        beigaSpele();
+        if (rezultatsIndex == 6) {
+            beigaSpele();
+        }
     }
 
+}
+
+function notirit(rbIndex){
+    console.log(rbIndex, rezultatsIndex, izmantotiBurti);
+    if (rbIndex == rezultatsIndex - 1){
+        document.getElementById("rb"+ -- rezultatsIndex).textContent = "";
+        document.getElementById(izmantotiBurti[rezultatsIndex]).classList.remove("izmantotsBurts");
+    }
 }
 
 function beigaSpele() {
