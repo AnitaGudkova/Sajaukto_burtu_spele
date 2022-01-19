@@ -21,7 +21,7 @@
                 <a href="speletajs.html">Burtu spēle</a> 
                
             </h2>
-            <h3> Sveiki, <i><span id="speletajs"></span></i></h3>
+            <h3> Sveiki, <i><span id="speletajs">spēlētāj</span></i>!</h3>
             
             <button onclick="startSpele();">STARTS</button>
             <br>
@@ -54,7 +54,9 @@
             document.onreadystatechange = function() {
                 if (document.readyState == 'complete') {
                     let params = window.location.hash.split(',');
-                    document.getElementById("speletajs").textContent = params[0];
+                    if(params[0]){
+                        document.getElementById("speletajs").textContent = params[0];
+                    }
                 }
             }
         </script>
