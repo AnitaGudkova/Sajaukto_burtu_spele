@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link href="style.css" rel="stylesheet"/>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noteikumi</title>
-</head>
-<body>
-  <h2> 
-    Spēlētāju tops 
- </h2> 
-  <p>
-	<i>Pagaidām, Tu esi labākais!</i>
-  <p>
-  <a href="index.html">Atpakaļ</a>
-</body>
+    <head>
+        <link href="style.css" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Noteikumi</title>
+    </head>
+    <body>
+        <h2>
+            Spēlētāju top-10
+        </h2>
+        <center>
+            <table>
+                <thead>
+                    <th>Vārds</th>
+                    <th>Laiks</th>
+                </thead>
+                <tbody id="rezultati">
+                    <tr>
+                        <td colspan="2">Pagaidām nav rezultātu</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="index.html">Atpakaļ</a>
+        </center>
+    </body>
+    <script type="text/javascript">
+        document.onreadystatechange = function () {
+            if (document.readyState == 'complete') {
+                fetch("https://burtuspelesserveris.anitagudkova.repl.co/rezultati")
+                    .then(response => response.json())
+                    .then(function (response) {
+                        var tableBody = "";
+                        for (var i = 0; i < response.length; i++) {
+                            tableBody += "<tr><td>" + response[i].vards + "</td><td>" + response[i].laiks + "</td></tr>";
+                        }
+                        document.getElementById("rezultati").innerHTML = tableBody;
+                    });
+            }
+        }
+    </script>
 </html>

@@ -51,6 +51,23 @@ function beigaSpele() {
     if (pVards == iegVards) {
         var rezultatsLaiks = (Date.now() - startsLaiks) / 1000;
         rezultatsTeksts = "Uzminēji vārdu " + rezultatsLaiks + " sek.";
+        var speletajs = document.getElementById("speletajs").textContent;
+        if(speletajs == '#'){
+            speletajs += "speletajs";
+        }
+        let spelesRezultats = {
+            vards: speletajs,
+            laiks: rezultatsLaiks
+        };
+
+        fetch('https://burtuspelesserveris.anitagudkova.repl.co/speletaja-rezultats', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(spelesRezultats)
+        });
+        
     } else {
         rezultatsTeksts = "Neuzminēji vārdu";
     }
