@@ -23,13 +23,13 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="index.html">Atpakaļ</a>
+        <b><a href="index.html">Atpakaļ</a></b>
         </center>
     </body>
     <script type="text/javascript">
         document.onreadystatechange = function () {
             if (document.readyState == 'complete') {
-                fetch("https://burtuspelesserveris.anitagudkova.repl.co/rezultati")
+                fetch("https://burtuspelesserveris.anitagudkova.repl.co/spele/rezultati")
                     .then(response => response.json())
                     .then(function (response) {
                         var tableBody = "";

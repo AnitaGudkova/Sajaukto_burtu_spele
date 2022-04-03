@@ -1,5 +1,5 @@
-var vards = "EDOMTE";
-var pVards = "METODE";
+var vards;
+var pVards;
 var rezultatsIndex = 0;
 var startsLaiks;
 var izmantotiBurti = [];
@@ -9,12 +9,31 @@ function startSpele() {
     startsLaiks = Date.now();
     rezultatsIndex = 0;
     document.getElementById("rezultats").textContent = "";
-    for (var i=0; i<6; i++) {
-        document.getElementById("b"+i).classList.remove("izmantotsBurts");
-        document.getElementById("b"+i).textContent = vards[i];
-        document.getElementById("rb"+i).textContent = "";
-    }
 
+    fetch('https://burtuspelesserveris.anitagudkova.repl.co/spele/random-vards')
+        .then((response) => {
+            return response.text().then((text) => {
+                pVards = text;
+                vards = text.split('').sort(function(){return 0.5-Math.random()}).join('');
+
+                let vardsCode = '';
+                let rVardsCode = '';
+                for (var i=0; i<vards.length; i++) {
+            
+                    vardsCode += '<div id="b' + i + '" class="block" onclick="izveleBurta(this);">' + vards[i] + '</div>';
+                    rVardsCode += '<div id="rb' + i + '" class="block" onclick="notirit(' + i + ');"></div>';
+            
+                }
+            
+                document.querySelector("#sakumVards").innerHTML = vardsCode;
+                document.querySelector("#resultVards").innerHTML = rVardsCode;
+                
+                document.querySelector("#sakumVards").style.display = "inline-block";
+                document.querySelector("#resultVards").style.display = "inline-block";
+                document.querySelector("#resultatsLabel").style.display = "block";
+            });
+        });
+    
 }
 
 function izveleBurta(element) {
@@ -25,7 +44,7 @@ function izveleBurta(element) {
         izmantotiBurti[rezultatsIndex++] = element.getAttribute("id");
         element.classList.add("izmantotsBurts");
 
-        if (rezultatsIndex == 6) {
+        if (rezultatsIndex == pVards.length) {
             beigaSpele();
         }
     }
@@ -43,7 +62,7 @@ function notirit(rbIndex){
 function beigaSpele() {
 
     var iegVards = "";
-    for (var i=0; i<6; i++) {
+    for (var i=0; i<pVards.length; i++) {
         iegVards += document.getElementById("rb"+i).textContent;
     }
 
@@ -60,7 +79,7 @@ function beigaSpele() {
             laiks: rezultatsLaiks
         };
 
-        fetch('https://burtuspelesserveris.anitagudkova.repl.co/speletaja-rezultats', {
+        fetch('https://burtuspelesserveris.anitagudkova.repl.co/spele/speletaja-rezultats', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'

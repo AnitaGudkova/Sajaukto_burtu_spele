@@ -1,26 +1,41 @@
 body {
-background-color: #92a8d1;
+background-image: url('k-brico-wall-bianco.jpg');
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h2 {
     text-align: center;
-    color: white;
+    color: burlywood;
 }
 h3{
     color:rgb(192, 80, 15)
 }
-table {
-    border: 2px solid grey;
-    width: 70%;
+.left{
+    position: absolute; 
+    left: 20; 
+    top: 20; 
+    width: 60%; 
+    text-align: center;
+}
+.right{
+    position: absolute; 
+    right: 0; 
+    top: 20; 
+    width: 40%;
+    font-size: 18px;
+    
+}
+table{
+    border: 2px solid rgb(62, 62, 126);
+    width: 30%;
     height: 30px;
     text-align: center;
     background-color: white;
-    
 }
+
 .spele {
-    width: 270px;
-    background: rgb(72, 86, 128);
+    display: inline-block;
+    background: rgb(173, 106, 30);
     font-size: 20px;
     text-align:center;
     padding:6px 2px 2px 2px;
@@ -28,16 +43,30 @@ table {
 
 .block {
     display: inline-block;
-    background: rgb(180, 178, 178);
+    background: rgb(231, 223, 223);
     width: 35px;
     height: 35px;
     border: 2px solid rgb(157, 191, 243);
 }
+
 p {
-    font-size: 18px;
-    color: white;
-    
+    color: rgb(109, 64, 6);
 }
+  
 .izmantotsBurts{
-    color:rgb(224, 215, 215)
+    color:rgb(134, 79, 7);
+}
+
+.wrapper{
+    width: 600px;
+    height: 500px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 10%;
+}
+.chataZinas{
+     height: 400px;
+    color:rgb(110, 63, 16);
+    padding: 10px;
+    overflow: scroll;
 }
